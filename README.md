@@ -1,8 +1,14 @@
 # BilTrader API - CS102 Project
 This repository contains the Spring Boot API service. This is meant to be used in conjunction with NextJS/React-based frontend.
 
+## Requirements
+Java 11 SDK
+Maven
+
 ## Installation
-To be updated later once a database instance is added. For now, just git clone the directory and refer to Spring Boot's docs.
+1. Clone the GitHub repository
+2. Browse to the local cloned repository's directory using Terminal on macOS or Powershell on Windows and run the following command: `./mvnw spring-boot:run`
+3. Next, using your web browser, navigate to `http://localhost:8080`. If you see an HTML error page, your installation is successful.
 
 ## Routes
 Initially, the API methods (mostly GET and POST) are going to be documented here. Please document each of the API methods in the following format:
