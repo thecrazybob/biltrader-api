@@ -4,11 +4,14 @@ This repository contains the Spring Boot API service. This is meant to be used i
 ## Requirements
 - Java 11 SDK
 - Maven
+- MySQL 8.0
 
 ## Installation
 1. Clone the GitHub repository
 2. Browse to the local cloned repository's directory using Terminal on macOS or Powershell on Windows and run the following command: `./mvnw spring-boot:run`
 3. Next, using your web browser, navigate to `http://localhost:8080`. If you see an HTML error page, your installation is successful.
+4. Install MySQL 8.0 and create a database named `biltrader`
+5. Update the database details, if necessary, in `src/main/resources/application.properties`
 
 ## Routes
 Initially, the API methods (mostly GET and POST) are going to be documented here. Please document each of the API methods in the following format:
