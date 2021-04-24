@@ -2,8 +2,8 @@
 This repository contains the Spring Boot API service. This is meant to be used in conjunction with NextJS/React-based frontend.
 
 ## Requirements
-Java 11 SDK
-Maven
+- Java 11 SDK
+- Maven
 
 ## Installation
 1. Clone the GitHub repository
