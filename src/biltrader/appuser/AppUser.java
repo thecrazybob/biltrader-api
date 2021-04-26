@@ -26,13 +26,15 @@ public class AppUser implements UserDetails {
     @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long id;
-    private String username;
+    private String firstName;
+    private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
     private Boolean loggedIn;
     private int[] listingsId;
@@ -40,14 +42,15 @@ public class AppUser implements UserDetails {
     // private Review[] reviews; to be implemented after the Review class
     private int[] responseTimes;
 
-    public AppUser(String username, String email, String password, AppUserRole appUserRole, Boolean locked,
-            Boolean enabled) {
-        this.username = username;
+    public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
-        this.locked = locked;
-        this.enabled = enabled;
+        // this.locked = locked;
+        // this.enabled = enabled;
     }
 
     @Override
@@ -63,12 +66,20 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
