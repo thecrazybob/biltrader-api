@@ -1,4 +1,4 @@
-package com.example.demo.appuser;
+package com.biltrader.api.appuser;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,10 +1,10 @@
-package com.example.demo.appuser;
+package com.biltrader.api.appuser;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.example.demo.registration.token.ConfirmationToken;
-import com.example.demo.registration.token.ConfirmationTokenService;
+import com.biltrader.api.registration.token.ConfirmationToken;
+import com.biltrader.api.registration.token.ConfirmationTokenService;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
