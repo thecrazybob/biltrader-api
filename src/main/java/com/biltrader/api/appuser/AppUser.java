@@ -37,9 +37,10 @@ public class AppUser implements UserDetails {
     private Boolean enabled = false;
 
     private Boolean loggedIn;
-    private int[] listingsId;
+    private Long[] listingsId;
     private int listingCounter;
-    // private Review[] reviews; to be implemented after the Review class
+
+    private Long[] reviewsId;
     private int[] responseTimes;
 
     public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
@@ -49,6 +50,7 @@ public class AppUser implements UserDetails {
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
+        reviewsId = new Long[0];
         // this.locked = locked;
         // this.enabled = enabled;
     }
@@ -96,20 +98,4 @@ public class AppUser implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-
-    public void createListing(int listingId) {
-        listingsId[listingCounter] = listingId;
-        listingCounter++;
-    }
-
-    public void removeListing(int listingId) {
-    }
-
-    // public void addReview(Review review){ to be implemented after the Review
-    // class
-    // }
-
-    // public void removeReview(int id) to be implemented after the Review class
-    // }
-
 }

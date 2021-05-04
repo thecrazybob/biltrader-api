@@ -1,10 +1,12 @@
 package com.biltrader.api.appuser;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.UUID;
 
 import com.biltrader.api.registration.token.ConfirmationToken;
 import com.biltrader.api.registration.token.ConfirmationTokenService;
+import com.biltrader.api.review.Review;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -58,4 +60,11 @@ public class AppUserService implements UserDetailsService {
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+
+    // public void addReview(AppUser appUser, Review review) {
+    // Long[] arr = Arrays.copyOf(appUser.getReviewsId(),
+    // appUser.getReviewsId().length + 1);
+    // arr[arr.length - 1] = review.getId();
+    // appUser.setReviewsId(arr);
+    // }
 }

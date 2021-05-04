@@ -33,7 +33,8 @@ public class ReviewService {
                 appUserRepository.findById(request.getReviewerId()).get(),
                 appUserRepository.findById(request.getReviewedId()).get());
 
-        appUserService.addReview(appUserRepository.findById(request.getReviewedId()).get(), review);
+        // appUserService.addReview(appUserRepository.findById(request.getReviewedId()).get(),
+        // review);
 
         reviewRepository.save(review);
 
