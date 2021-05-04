@@ -2,6 +2,7 @@ package com.biltrader.api.appuser;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import com.biltrader.api.registration.token.ConfirmationToken;
@@ -71,10 +72,11 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.findById(id).get();
     }
 
-    // public void addReview(AppUser appUser, Review review) {
-    // Long[] arr = Arrays.copyOf(appUser.getReviewsId(),
-    // appUser.getReviewsId().length + 1);
-    // arr[arr.length - 1] = review.getId();
-    // appUser.setReviewsId(arr);
-    // }
+    public void addReview(AppUser appUser, Review review) {
+        List<Review> updatedReviews = appUser.getReviews();
+
+        updatedReviews.add(review);
+
+        appUser.setReviews(updatedReviews);
+    }
 }

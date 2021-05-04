@@ -37,11 +37,11 @@ public class Review {
     private LocalDateTime reviewTime;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "review_poster_id")
+    @JoinColumn(nullable = false, name = "review_poster")
     private AppUser reviewerUser;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "review_receiver_id")
+    @JoinColumn(nullable = false, name = "review_receiver")
     private AppUser reviewedUser;
 
     public Review(int stars, String title, String content, LocalDateTime reviewTime, AppUser reviewerUser,

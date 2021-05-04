@@ -9,8 +9,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
+import com.biltrader.api.review.Review;
 
 @Getter
 @Setter
@@ -36,12 +41,15 @@ public class AppUser implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
-    private Boolean loggedIn;
+    private Boolean loggedIn = false;
     private Long[] listingsId;
     private int listingCounter;
 
     private Long[] reviewsId;
     private int[] responseTimes;
+
+    @OneToMany(mappedBy = "reviewedUser")
+    private List<Review> reviews;
 
     public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
 
@@ -53,6 +61,7 @@ public class AppUser implements UserDetails {
         reviewsId = new Long[0];
         // this.locked = locked;
         // this.enabled = enabled;
+        this.reviews = new ArrayList<Review>();
     }
 
     @Override
