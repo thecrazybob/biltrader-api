@@ -61,6 +61,16 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.enableAppUser(email);
     }
 
+    public AppUser getUserById(Long id) {
+        boolean exists = appUserRepository.findById(id).isPresent();
+
+        if (!exists) {
+            throw new IllegalStateException("user with id " + id + "does not exist");
+        }
+
+        return appUserRepository.findById(id).get();
+    }
+
     // public void addReview(AppUser appUser, Review review) {
     // Long[] arr = Arrays.copyOf(appUser.getReviewsId(),
     // appUser.getReviewsId().length + 1);
