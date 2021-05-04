@@ -1,7 +1,7 @@
 package com.biltrader.api.listing;
 
 import com.biltrader.api.appuser.AppUser;
-import com.biltrader.api.listing.category.Category;
+import com.biltrader.api.listing.category.*;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
