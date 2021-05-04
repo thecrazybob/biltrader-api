@@ -5,6 +5,7 @@ import com.biltrader.api.listing.category.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +38,10 @@ public class ListingService {
                 .orElseThrow(() -> new IllegalStateException("listing with id " + listingId + " does not exist"));
         
         return listing;
+    }
+    
+    public List<Listing> getListingsByCategory(Category category) {
+        return listingRepository.findByCategory(category);
     }
     
     @Transactional

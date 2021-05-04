@@ -1,8 +1,12 @@
 package com.biltrader.api.listing;
 
+import com.biltrader.api.listing.category.*;
+
 import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/listing")
@@ -19,6 +23,11 @@ public class ListingController {
     @GetMapping(path = "{listingId}")
     public Listing getListing(@PathVariable("listingId") Long listingId) {
         return listingService.getListing(listingId);
+    }
+    
+    @GetMapping(path = "category/{categoryName}")
+    public List<Listing> getListingsByCategory(@PathVariable("categoryName") Category categoryName) {
+        return listingService.getListingsByCategory(categoryName);
     }
     
     @PutMapping(path = "{listingId}")
