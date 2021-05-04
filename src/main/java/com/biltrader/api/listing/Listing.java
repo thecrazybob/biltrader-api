@@ -50,4 +50,9 @@ public class Listing {
         this.category = category;
     }
     
+    // lombok @Setter doesn't support enums
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
 }
