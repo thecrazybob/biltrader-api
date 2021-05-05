@@ -13,5 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public interface ListingRepository extends JpaRepository<Listing, Long> {
     Optional<Listing> findById(Long id);
+    
+    @Query("SELECT a FROM Listing a")
+    List<Listing> getAllListings();
+    
     List<Listing> findByCategory(Category category);
 }

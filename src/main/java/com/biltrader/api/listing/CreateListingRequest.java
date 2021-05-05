@@ -14,7 +14,7 @@ public class CreateListingRequest {
     private final String title;
     private final String description;
     private final String imageUrl;
-    private final Double price;
+    private final String price;
     private final Boolean isPublic;
     private final Integer categoryId;
 }

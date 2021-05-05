@@ -28,33 +28,37 @@ public class ListingService {
             request.getIsPublic(),
             Category.fromValue(request.getCategoryId())
         );
-        
+
         listingRepository.save(listing);
         return listing.getId();
     }
-    
+
     public Listing getListing(Long listingId) {
         Listing listing = listingRepository.findById(listingId)
                 .orElseThrow(() -> new IllegalStateException("listing with id " + listingId + " does not exist"));
-        
+
         return listing;
     }
-    
+
+    public List<Listing> getAllListings() {
+        return listingRepository.getAllListings();
+    }
+
     public List<Listing> getListingsByCategory(Category category) {
         return listingRepository.findByCategory(category);
     }
-    
+
     @Transactional
     public String updateListing(Long listingId, String title, String description,
-        String imageUrl, Double price, Boolean isPublic, Integer categoryId) {
+        String imageUrl, String price, Boolean isPublic, Integer categoryId) {
 
         Listing listing = listingRepository.findById(listingId)
                 .orElseThrow(() -> new IllegalStateException("listing with id " + listingId + " does not exist"));
-        
+
         if (title != null) {
             listing.setTitle(title);
         }
-        
+
         if (description != null) {
             listing.setDescription(description);
         }
@@ -62,22 +66,22 @@ public class ListingService {
         if (imageUrl != null) {
             listing.setImageUrl(imageUrl);
         }
-        
+
         if (price != null) {
             listing.setPrice(price);
         }
-        
+
         if (isPublic != null) {
             listing.setIsPublic(isPublic);
         }
-        
+
         if (categoryId != null) {
             listing.setCategory(Category.fromValue(categoryId));
         }
-        
+
         return "listing updated successfully";
     }
-    
+
     @Transactional
     public String deleteListing(Long listingId) {
         boolean exists = listingRepository.existsById(listingId);
