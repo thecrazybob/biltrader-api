@@ -25,6 +25,11 @@ public class ListingController {
         return listingService.getListing(listingId);
     }
     
+    @GetMapping(path = "all")
+    public List<Listing> getAllListings() {
+        return listingService.getAllListings();
+    }
+    
     @GetMapping(path = "category/{categoryName}")
     public List<Listing> getListingsByCategory(@PathVariable("categoryName") Category categoryName) {
         return listingService.getListingsByCategory(categoryName);

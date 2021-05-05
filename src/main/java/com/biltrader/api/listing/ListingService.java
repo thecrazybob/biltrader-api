@@ -40,6 +40,10 @@ public class ListingService {
         return listing;
     }
     
+    public List<Listing> getAllListings() {
+        return listingRepository.getAllListings();
+    }
+    
     public List<Listing> getListingsByCategory(Category category) {
         return listingRepository.findByCategory(category);
     }
