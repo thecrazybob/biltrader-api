@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping(path = "api/v1/app_user")
 @AllArgsConstructor
 /**
- * Controller for the AppUser that handles http requests and sneds them to the
+ * Controller for the AppUser that handles http requests and sends them to the
  * service class
  */
 public class AppUserController {

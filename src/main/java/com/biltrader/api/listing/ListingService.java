@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * Service for the Listing class. Contains all the logic responsible for creating, updating, and deleting
+ * Listing objects. Also handles getting all listings from the repository.
+ */
 @Service
 @AllArgsConstructor
 public class ListingService {

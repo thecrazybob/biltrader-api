@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Request class that contains the properties necessary for creating a new Listing object
+ */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode

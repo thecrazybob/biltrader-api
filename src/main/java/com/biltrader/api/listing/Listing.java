@@ -18,7 +18,8 @@ import java.util.Collections;
 @NoArgsConstructor
 @Entity
 /**
- * Listing
+ * Model class for the listing. Contains the properties necessary for a listing page in the frontend.
+ * Contains a reference to its owner AppUser.
  */
 public class Listing {
 

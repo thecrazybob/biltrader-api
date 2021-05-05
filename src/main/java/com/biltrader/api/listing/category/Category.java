@@ -2,7 +2,7 @@ package com.biltrader.api.listing.category;
 
 /**
  * Category enum with an id
- * In the database, categories are stored by index, so they can be parsed using Category.values()[index]
+ * Categories are sent to the frontend as strings, and are received in the same way.
 */
 public enum Category {
     // Ids that are a multiple of 100 are higher categories
