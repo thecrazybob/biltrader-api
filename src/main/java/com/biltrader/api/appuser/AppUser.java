@@ -43,11 +43,11 @@ public class AppUser implements UserDetails {
     private Boolean enabled = false;
 
     private Boolean loggedIn = false;
-    private Long[] listingsId;
-    private int listingCounter;
+    // private Long[] listingsId;
+    // private int listingCounter;
 
-    private Long[] reviewsId;
-    private int[] responseTimes;
+    // private Long[] reviewsId;
+    // private int[] responseTimes;
 
     @OneToMany(mappedBy = "reviewedUser")
     private List<Review> reviews;
@@ -59,7 +59,6 @@ public class AppUser implements UserDetails {
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
-        reviewsId = new Long[0];
         this.reviews = new ArrayList<Review>();
     }
 
