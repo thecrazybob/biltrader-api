@@ -30,17 +30,17 @@ public class Listing {
     @ManyToOne
     @JoinColumn(nullable = false, name = "owner_id")
     private AppUser owner;
-    
+
     private String title;
     private String description;
     private String imageUrl;
-    private Double price;
+    private String price;
     private Boolean isPublic;
     private Category category;
 
     private Boolean isFeatured = false;
 
-    public Listing(AppUser owner, String title, String description, String imageUrl, Double price, Boolean isPublic, Category category) {
+    public Listing(AppUser owner, String title, String description, String imageUrl, String price, Boolean isPublic, Category category) {
         this.owner = owner;
         this.title = title;
         this.description = description;
@@ -49,10 +49,10 @@ public class Listing {
         this.isPublic = isPublic;
         this.category = category;
     }
-    
+
     // lombok @Setter doesn't support enums
     public void setCategory(Category category) {
         this.category = category;
     }
-    
+
 }

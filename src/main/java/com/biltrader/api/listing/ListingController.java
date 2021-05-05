@@ -43,7 +43,7 @@ public class ListingController {
         @RequestParam(required = false) String title,
         @RequestParam(required = false) String description,
         @RequestParam(required = false) String imageUrl,
-        @RequestParam(required = false) Double price,
+        @RequestParam(required = false) String price,
         @RequestParam(required = false) Boolean isPublic,
         @RequestParam(required = false) Integer categoryId) {
 
