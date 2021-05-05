@@ -23,7 +23,8 @@ import com.biltrader.api.review.Review;
 @NoArgsConstructor
 @Entity
 /**
- * AppUser
+ * Model class for the AppUser, is an entity that trasnlates as a table in the
+ * database
  */
 public class AppUser implements UserDetails {
 
@@ -59,8 +60,6 @@ public class AppUser implements UserDetails {
         this.password = password;
         this.appUserRole = appUserRole;
         reviewsId = new Long[0];
-        // this.locked = locked;
-        // this.enabled = enabled;
         this.reviews = new ArrayList<Review>();
     }
 

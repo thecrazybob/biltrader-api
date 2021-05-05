@@ -18,6 +18,11 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+/**
+ * Service class for the AppUser, recives requests from the controller or other
+ * classes that will edit the AppUser class and applies the necessary logic by
+ * using the repository interface and editing the AppUser
+ */
 public class AppUserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
@@ -26,11 +31,25 @@ public class AppUserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
+    /**
+     * Searches for user by email
+     * 
+     * @param email
+     * @return UserDetails of the found user
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return appUserRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
     }
+
+    /**
+     * Signs up new user
+     * 
+     * @param appUser to sign up
+     * @return String sign up token
+     */
 
     public String signUpUser(AppUser appUser) {
         boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
@@ -57,9 +76,21 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
+    /**
+     * Enables AppUser
+     * 
+     * @param email of the user to enable
+     * @return int
+     */
+
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+
+    /**
+     * @param id of the user to be searched
+     * @return AppUser with the given id
+     */
 
     public AppUser getUserById(Long id) {
         boolean exists = appUserRepository.findById(id).isPresent();
@@ -71,6 +102,13 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.findById(id).get();
     }
 
+    /**
+     * Adds review to the AppUser's reviews List
+     * 
+     * @param appUser that the review will be added to
+     * @param review  to be added
+     */
+
     public void addReview(AppUser appUser, Review review) {
         List<Review> updatedReviews = appUser.getReviews();
 
@@ -79,12 +117,27 @@ public class AppUserService implements UserDetailsService {
         appUser.setReviews(updatedReviews);
     }
 
+    /**
+     * Sets AppUser's loggedIn to true
+     * 
+     * @param user to login
+     */
+
     public void loginUser(AppUser user) {
         if (!user.getEnabled()) {
             throw new IllegalStateException("user not activated");
         }
+
         user.setLoggedIn(true);
+
+        appUserRepository.setLoggedIn(user.getEmail());
     }
+
+    /**
+     * Sets AppUser's loggedIn to false
+     * 
+     * @param id of user to logout
+     */
 
     public void logoutUser(Long id) {
         AppUser user = appUserRepository.findById(id).get();
