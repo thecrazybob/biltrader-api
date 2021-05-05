@@ -11,11 +11,20 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+/**
+ * Login service class
+ */
 public class LoginService {
 
     AppUserRepository appUserRepository;
     AppUserService appUserService;
 
+    /**
+     * Login user according to info in the LoginRequest
+     * 
+     * @param loginRequest conaining email and password
+     * @return Result of login and errors if any
+     */
     public String login(LoginRequest loginRequest) {
 
         boolean userExists = appUserRepository.findByEmail(loginRequest.getEmail()).isPresent();
@@ -36,9 +45,16 @@ public class LoginService {
 
         appUserService.loginUser(user);
 
-        return "{ \"message\": \"Successful\", \"isLoggedIn\": \"true\", \"firstName\": \"" + user.getFirstName() + "\", \"lastName\": \"" + user.getLastName() + "\" }";
+        return "{ \"message\": \"Successful\", \"isLoggedIn\": \"true\", \"firstName\": \"" + user.getFirstName()
+                + "\", \"lastName\": \"" + user.getLastName() + "\" }";
     }
 
+    /**
+     * Logout user with given id
+     * 
+     * @param id of user to logout
+     * @return Result of logout and errors if any
+     */
     public String logout(Long id) {
         appUserService.logoutUser(id);
         return "Successful";
