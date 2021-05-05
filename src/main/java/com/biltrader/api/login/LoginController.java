@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import lombok.AllArgsConstructor;
 
@@ -17,6 +19,7 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping(path = "login")
+    @CrossOrigin(origins = "http://localhost:3000")
     public String login(@RequestBody LoginRequest loginRequest) {
         return loginService.login(loginRequest);
     }

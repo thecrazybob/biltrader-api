@@ -21,7 +21,7 @@ public class LoginService {
         boolean userExists = appUserRepository.findByEmail(loginRequest.getEmail()).isPresent();
 
         if (!userExists) {
-            throw new IllegalStateException("invalid email adress");
+            throw new IllegalStateException("Invalid email address");
         }
 
         AppUser user;
@@ -31,16 +31,16 @@ public class LoginService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         if (!encoder.matches(loginRequest.getPassword(), user.getPassword())) {
-            throw new IllegalStateException("wrong password");
+            throw new IllegalStateException("Wrong password");
         }
 
         appUserService.loginUser(user);
 
-        return "successful";
+        return "{ \"message\": \"Successful\", \"isLoggedIn\": \"true\", \"firstName\": \"" + user.getFirstName() + "\", \"lastName\": \"" + user.getLastName() + "\" }";
     }
 
     public String logout(Long id) {
         appUserService.logoutUser(id);
-        return "successfull";
+        return "Successful";
     }
 }
