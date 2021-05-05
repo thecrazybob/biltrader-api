@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-
 import java.util.List;
 
+/**
+ * Controller for the Listing class. Receives HTTP requests from the frontend and passes
+ * them to the Service class to be processed.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "api/v1/listing")
