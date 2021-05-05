@@ -1,7 +1,6 @@
 package com.biltrader.api.appuser;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,5 +77,18 @@ public class AppUserService implements UserDetailsService {
         updatedReviews.add(review);
 
         appUser.setReviews(updatedReviews);
+    }
+
+    public void loginUser(AppUser user) {
+        if (!user.getEnabled()) {
+            throw new IllegalStateException("user not activated");
+        }
+        user.setLoggedIn(true);
+    }
+
+    public void logoutUser(Long id) {
+        AppUser user = appUserRepository.findById(id).get();
+
+        user.setLoggedIn(false);
     }
 }
